@@ -3,6 +3,7 @@ package app.mcbbs.mobile
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -33,6 +34,8 @@ class MainActivity : ComponentActivity() {
 fun WebViewContainer() {
     AndroidView(factory = { context ->
         val webView = WebView(context)
+        webView.settings.javaScriptEnabled = true
+        webView.webViewClient = WebViewClient()
         webView.loadUrl("https://mcbbs.app")
         webView
     }, modifier = Modifier.fillMaxSize())
